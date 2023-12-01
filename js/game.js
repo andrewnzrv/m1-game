@@ -4,12 +4,12 @@ class Game {
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end-screen");
 
-    this.player = new Player(100, 100, 200, 200, "./images/player.png");
+    this.player = new Player(0, 0, 200, 100, "./images/player.png");
   }
 
   start() {
     this.gameStartScreen.style.display = "none";
-    this.gameScreen.style.display = "block";
+    this.gameScreen.style.display = "flex";
     this.gameLoop();
   }
 

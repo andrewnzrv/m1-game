@@ -8,13 +8,10 @@ window.onload = function () {
     game.start();
 
     function handleMouseMovements(event) {
-      //event.preventDefault();
-      game.player.directionX = event.clientX;
-      game.player.directionY = event.clientY;
+      game.player.left = event.clientX;
+      game.player.top = event.clientY;
     }
 
     window.addEventListener("mousemove", handleMouseMovements);
-
-    console.log(game.player.directionX);
   }
 };
