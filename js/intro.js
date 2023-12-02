@@ -1,7 +1,10 @@
 window.onload = function () {
-  document.getElementById("start-button").addEventListener("click", () => {
+  startGame(); // Remove to enable the start button
+
+  //Uncomment to enable the start button
+  /*document.getElementById("start-button").addEventListener("click", () => {
     startGame();
-  });
+  }); */
 
   function startGame() {
     game = new Game();

@@ -1,4 +1,4 @@
-class element {
+class Player {
   constructor(left, top, width, height, imgSrc) {
     this.gameScreen = document.getElementById("game-screen");
     this.left = left;
