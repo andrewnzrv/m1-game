@@ -5,8 +5,7 @@ class Game {
     this.gameEndScreen = document.getElementById("game-end-screen");
 
     this.player = new Player(0, 0, 200, 100, "./images/player.png");
-
-    this.obstacle = new Obstacle(500, 200, 100, 50, "./images/obstacle.png");
+    this.obstacles = [];
   }
 
   start() {
@@ -23,6 +22,13 @@ class Game {
 
   update() {
     this.player.move();
-    this.obstacle.move();
+
+    this.obstacles.forEach((obstacle) => {
+      obstacle.move();
+    });
+
+    if (Math.random() > 1) {
+      this.obstacles.push(new Obstacle());
+    }
   }
 }

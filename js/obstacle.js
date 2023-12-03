@@ -1,12 +1,17 @@
 class Obstacle extends Player {
-  /*constructor(left, top, width, height, imgSrc) {
-    super(left, "500");
-    super(top, "500");
-    super(width, "100");
-    super(height, "50");
-  }*/
+  constructor() {
+    super();
+    this.width = 100;
+    this.height = 50;
+    this.element.src = "./images/obstacle.png";
+    this.left = this.gameScreen.offsetWidth - this.width;
+    this.top = Math.floor(
+      Math.random() * (this.gameScreen.offsetHeight - 50) + 50
+    );
+  }
+
   move() {
-    //super(left, "300");
+    this.left -= 3;
     super.updatePosition();
   }
 }
