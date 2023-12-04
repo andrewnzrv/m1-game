@@ -5,7 +5,7 @@ class Game {
     this.gameScreen = document.getElementById("game-screen");
     this.gameStats = document.getElementById("game-stats");
     this.gameEndScreen = document.getElementById("game-end-screen");
-    this.player = new Player(0, 0, 200, 100, "./images/player.png");
+    this.player = new Player(0, 0, 150, 150, "./images/player.png");
     this.obstacles = [];
     this.projectiles = [];
     this.lives = 3;
@@ -15,6 +15,7 @@ class Game {
 
   start() {
     this.gameStartScreen.style.display = "none";
+    this.gameEndScreen.style.display = "none";
     this.gameContainer
       .querySelectorAll("*")
       .forEach((element) => (element.style.display = "block"));
@@ -113,13 +114,5 @@ class Game {
     this.gameEndScreen
       .querySelectorAll("*")
       .forEach((element) => (element.style.display = "block"));
-
-    let endText = this.gameEndScreen.appendChild(document.createElement("h1"));
-
-    if (this.lives === 0) {
-      endText.innerText = "YOU LOSE";
-    } else {
-      endText.innerText = "YOU WIN";
-    }
   }
 }

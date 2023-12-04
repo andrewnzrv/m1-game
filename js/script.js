@@ -5,6 +5,7 @@ window.onload = function () {
 
   document.getElementById("restart-button").addEventListener("click", () => {
     startGame();
+    console.log("Restart clicked"); // -----> REMOVE
   });
 
   function startGame() {
@@ -16,11 +17,10 @@ window.onload = function () {
       game.player.top = event.clientY;
     }
 
-    setTimeout(() => {
-      window.addEventListener("mousemove", handleMouseMovements);
-      window.addEventListener("click", () => {
-        game.projectiles.push(new Projectile());
-      });
-    }, 1000);
+    window.addEventListener("mousemove", handleMouseMovements);
+    window.addEventListener("click", () => {
+      game.projectiles.push(new Projectile());
+      console.log("FIRE!!!"); // -----> REMOVE
+    });
   }
 };
