@@ -53,6 +53,12 @@ body {
 	overflow: hidden;
 	}
 
+#game-stats {
+	position: absolute;
+	margin-top: 50px;
+	margin-left: 50px;
+}
+	  
 #game-screen {
     background: lightgrey;
     width: 100vw;
@@ -61,3 +67,11 @@ body {
     cursor: none;
     overflow: hidden;
     }
+
+img {
+	user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}

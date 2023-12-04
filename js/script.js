@@ -16,5 +16,9 @@ window.onload = function () {
     }
 
     window.addEventListener("mousemove", handleMouseMovements);
+
+    window.addEventListener("click", () => {
+      game.projectiles.push(new Projectile());
+    });
   }
 };

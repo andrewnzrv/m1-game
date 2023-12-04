@@ -9,6 +9,7 @@ class Player {
 
     this.element.src = imgSrc;
     this.element.style.position = "absolute";
+    this.element.style.zIndex = "2";
 
     this.element.style.left = `${left}px`;
     this.element.style.top = `${top}px`;
@@ -19,11 +20,11 @@ class Player {
   }
 
   move() {
-    if (this.left < 0) {
-      this.left = 0;
+    if (this.left < 10) {
+      this.left = 10;
     }
-    if (this.top < 0) {
-      this.top = 0;
+    if (this.top < 10) {
+      this.top = 10;
     }
     if (this.left > this.gameScreen.offsetWidth - this.width - 10) {
       this.left = this.gameScreen.offsetWidth - this.width - 10;

@@ -20,6 +20,7 @@ class Obstacle extends Player {
     // Set the speed of obstacles
     this.left -= 3;
 
+    // Fix getting blinking obstacles in the upper left corner
     if (this.left <= this.gameScreen.clientWidth) {
       this.element.style.display = "block";
     }
