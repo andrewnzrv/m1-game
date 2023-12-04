@@ -27,7 +27,15 @@ class Game {
       obstacle.move();
     });
 
-    if (Math.random() > 1) {
+    this.obstacles.forEach((obstacle) => {
+      if (obstacle.left + obstacle.width < 0) {
+        obstacle.element.remove();
+        this.obstacles.splice(obstacle, 1);
+      }
+    });
+
+    // Set the frequency of adding new obstacles
+    if (Math.random() > 0.99) {
       this.obstacles.push(new Obstacle());
     }
   }
