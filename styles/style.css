@@ -45,7 +45,6 @@ table {
 /* END OF RESET CSS*/
 
 body {
-    background: grey; /* Remove */
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -53,20 +52,29 @@ body {
 	overflow: hidden;
 	}
 
+#restart-button {
+	display: none;
+}	
+
 #game-stats {
 	position: absolute;
 	margin-top: 50px;
 	margin-left: 50px;
+	display: none;
 }
 	  
 #game-screen {
     background: lightgrey;
     width: 100vw;
     height: 100vh;
-    display: flex; /* Change to none to enable the start button */
+    display: none;
     cursor: none;
     overflow: hidden;
     }
+
+#game-end {
+	display: none;
+}
 
 img {
 	user-select: none;

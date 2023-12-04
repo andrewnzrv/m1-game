@@ -1,10 +1,11 @@
 window.onload = function () {
-  startGame(); // Remove to enable the start button
-
-  //Uncomment to enable the start button
-  /*document.getElementById("start-button").addEventListener("click", () => {
+  document.getElementById("start-button").addEventListener("click", () => {
     startGame();
-  }); */
+  });
+
+  document.getElementById("restart-button").addEventListener("click", () => {
+    startGame();
+  });
 
   function startGame() {
     game = new Game();
@@ -15,10 +16,11 @@ window.onload = function () {
       game.player.top = event.clientY;
     }
 
-    window.addEventListener("mousemove", handleMouseMovements);
-
-    window.addEventListener("click", () => {
-      game.projectiles.push(new Projectile());
-    });
+    setTimeout(() => {
+      window.addEventListener("mousemove", handleMouseMovements);
+      window.addEventListener("click", () => {
+        game.projectiles.push(new Projectile());
+      });
+    }, 1000);
   }
 };

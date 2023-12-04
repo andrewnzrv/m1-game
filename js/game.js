@@ -1,22 +1,31 @@
 class Game {
   constructor() {
     this.gameStartScreen = document.getElementById("game-start-screen");
+    this.gameContainer = document.getElementById("game-container");
     this.gameScreen = document.getElementById("game-screen");
+    this.gameStats = document.getElementById("game-stats");
     this.gameEndScreen = document.getElementById("game-end-screen");
     this.player = new Player(0, 0, 200, 100, "./images/player.png");
     this.obstacles = [];
     this.projectiles = [];
     this.lives = 3;
     this.score = 0;
+    this.gameIsOver = false;
   }
 
   start() {
     this.gameStartScreen.style.display = "none";
-    this.gameScreen.style.display = "flex";
+    this.gameContainer
+      .querySelectorAll("*")
+      .forEach((element) => (element.style.display = "block"));
     this.gameLoop();
   }
 
   gameLoop() {
+    if (this.gameIsOver) {
+      return;
+    }
+
     this.update();
 
     window.requestAnimationFrame(() => this.gameLoop());
@@ -82,5 +91,35 @@ class Game {
 
     document.getElementById("lives").innerText = this.lives;
     document.getElementById("score").innerText = this.score;
+
+    if (this.lives === 0 || this.score === 5) {
+      this.endGame();
+    }
+  }
+
+  endGame() {
+    setTimeout(() => {
+      this.player.element.remove();
+      this.projectiles.forEach((projectile) => projectile.element.remove());
+      this.obstacles.forEach((obstacle) => obstacle.element.remove());
+    }, 1500);
+
+    this.gameIsOver = true;
+
+    this.gameContainer
+      .querySelectorAll("*")
+      .forEach((element) => (element.style.display = "none"));
+    this.gameEndScreen.style.display = "block";
+    this.gameEndScreen
+      .querySelectorAll("*")
+      .forEach((element) => (element.style.display = "block"));
+
+    let endText = this.gameEndScreen.appendChild(document.createElement("h1"));
+
+    if (this.lives === 0) {
+      endText.innerText = "YOU LOSE";
+    } else {
+      endText.innerText = "YOU WIN";
+    }
   }
 }
