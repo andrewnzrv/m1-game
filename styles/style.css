@@ -56,6 +56,12 @@ body {
 	display: none;
 }	
 
+#game-container {
+	/*background-image: url("../../images/scene.png");
+	background-size: cover;*/
+	background: grey;
+}
+
 #game-stats {
 	position: absolute;
 	margin-top: 50px;
@@ -64,7 +70,6 @@ body {
 }
 	  
 #game-screen {
-    background: lightgrey;
     width: 100vw;
     height: 100vh;
     display: none;

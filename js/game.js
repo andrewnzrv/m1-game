@@ -5,7 +5,7 @@ class Game {
     this.gameScreen = document.getElementById("game-screen");
     this.gameStats = document.getElementById("game-stats");
     this.gameEndScreen = document.getElementById("game-end-screen");
-    this.player = new Player(0, 0, 150, 150, "./images/player.png");
+    this.player = new Player(0, 0, 189, 105, "./images/player.png");
     this.obstacles = [];
     this.projectiles = [];
     this.lives = 3;
