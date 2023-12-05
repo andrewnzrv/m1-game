@@ -50,6 +50,7 @@ body {
     justify-content: center;
     align-items: center;
 	overflow: hidden;
+	background: grey;
 	}
 
 #restart-button {
@@ -63,10 +64,34 @@ body {
 }
 
 #game-stats {
-	position: absolute;
-	margin-top: 50px;
+	margin-top: 100px;
 	margin-left: 50px;
+	margin-right: 50px;
 	display: none;
+	justify-content: space-between;
+}
+
+#lives {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+#score {
+	display: block;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-end;
+}
+
+#score-text {
+	width: 128px;
+	height: 24px;
+	margin-bottom: 10px;
+}
+
+.life {
+	margin-right: 10px;;
 }
 	  
 #game-screen {

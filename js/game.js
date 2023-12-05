@@ -4,6 +4,8 @@ class Game {
     this.gameContainer = document.getElementById("game-container");
     this.gameScreen = document.getElementById("game-screen");
     this.gameStats = document.getElementById("game-stats");
+    this.livesImg = document.getElementById("lives");
+    this.scoreNumImg = document.getElementById("score-number");
     this.gameEndScreen = document.getElementById("game-end-screen");
     this.player = new Player(0, 0, 189, 105, "./images/player.png");
     this.obstacles = [];
@@ -18,7 +20,8 @@ class Game {
     this.gameEndScreen.style.display = "none";
     this.gameContainer
       .querySelectorAll("*")
-      .forEach((element) => (element.style.display = "block"));
+      .forEach((element) => (element.style.display = "flex"));
+    this.scoreNumImg.innerHTML = "";
     this.gameLoop();
   }
 
@@ -82,6 +85,17 @@ class Game {
           console.log(`Projectiles: ${this.projectiles.length}`); // -----> REMOVE
           i--;
           j--;
+
+          // Update score
+          this.scoreNumImg.innerHTML = "";
+          const scoreArray = Array.from(String(this.score), Number);
+          scoreArray.forEach((digit) => {
+            this.scoreNumImg.appendChild(
+              Object.assign(document.createElement("img"), {
+                src: `images/score/${digit}.png`,
+              })
+            );
+          });
         }
       }
     }
@@ -90,10 +104,29 @@ class Game {
       this.obstacles.push(new Obstacle());
     }
 
-    document.getElementById("lives").innerText = this.lives;
-    document.getElementById("score").innerText = this.score;
+    // Update lives images
+    switch (this.lives) {
+      case 3:
+        this.livesImg
+          .querySelectorAll("*")
+          .forEach((element) => (element.style.display = "flex"));
+        break;
+      case 2:
+        document.getElementById("life-3").style.display = "none";
+        break;
+      case 1:
+        document.getElementById("life-2").style.display = "none";
+        document.getElementById("life-3").style.display = "none";
+        break;
+      case 0:
+        document.getElementById("life-1").style.display = "none";
+        document.getElementById("life-2").style.display = "none";
+        document.getElementById("life-3").style.display = "none";
+        break;
+    }
 
-    if (this.lives === 0 || this.score === 5) {
+    // Check if game is over
+    if (this.lives === 0 || this.score === 50) {
       this.endGame();
     }
   }
