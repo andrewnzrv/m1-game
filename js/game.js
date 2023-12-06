@@ -19,6 +19,9 @@ class Game {
   start() {
     this.gameStartScreen.style.display = "none";
     this.gameEndScreen.style.display = "none";
+    this.gameEndScreen
+      .querySelectorAll("*")
+      .forEach((element) => (element.style.display = "none"));
     this.scoreNumImg.innerHTML = "";
     this.gameContainer.style.display = "block";
     this.gameContainer
@@ -141,7 +144,7 @@ class Game {
     }
 
     // Check if game is over
-    if (this.lives === 0 || this.score === 50) {
+    if (this.lives === 0 || this.score === 5) {
       this.endGame();
     }
   }
