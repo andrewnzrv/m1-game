@@ -50,7 +50,7 @@ body {
     justify-content: center;
     align-items: center;
 	overflow: hidden;
-	background: grey;
+	background-image: url("../../images/scene.png");
 	}
 
 img {
@@ -62,10 +62,9 @@ img {
 }
 
 #game-container {
-	/*background-image: url("../../images/scene.png");
-	background-size: cover;*/
+	background-image: url("../../images/scene.png");
+	background-size: cover;
 	height: 100vh;
-	background: grey;
 	display: none;
 	cursor: none;
 }

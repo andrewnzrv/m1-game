@@ -66,6 +66,12 @@ class Game {
 
       // Check for collision (player and obstacle)
       else if (this.player.didCollide(obstacle)) {
+        // Explode
+        let explosion = new Explosion(this.player.left, this.player.top);
+        setTimeout(() => {
+          explosion.element.remove();
+        }, 500);
+
         obstacle.element.remove();
         this.obstacles.splice(i, 1);
         this.lives--;
@@ -141,10 +147,6 @@ class Game {
 
   endGame() {
     this.gameIsOver = true;
-
-    this.gameContainer
-      .querySelectorAll("*")
-      .forEach((element) => (element.style.opacity = "0.5"));
     this.gameEndScreen.style.display = "flex";
     this.gameEndScreen
       .querySelectorAll("*")
