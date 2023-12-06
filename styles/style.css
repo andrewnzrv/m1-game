@@ -74,20 +74,23 @@ body {
 #lives {
 	display: flex;
 	justify-content: flex-start;
-	align-items: center;
+	align-items: flex-start;
 }
 
 #score {
-	display: block;
+	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: flex-end;
 }
 
 #score-text {
-	width: 128px;
 	height: 24px;
 	margin-bottom: 10px;
+}
+
+#score-number {
+	height: 21px;
 }
 
 .life {

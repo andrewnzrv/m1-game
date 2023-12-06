@@ -10,7 +10,7 @@ class Game {
     this.player = new Player(0, 0, 189, 105, "./images/player.png");
     this.obstacles = [];
     this.projectiles = [];
-    this.lives = 3;
+    this.lives = 100;
     this.score = 0;
     this.gameIsOver = false;
   }
