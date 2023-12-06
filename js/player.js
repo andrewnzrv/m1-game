@@ -1,8 +1,8 @@
 class Player {
-  constructor(left, top, width, height, imgSrc) {
+  constructor(width, height, imgSrc) {
     this.gameScreen = document.getElementById("game-screen");
-    this.left = left;
-    this.top = top;
+    this.left = 0;
+    this.top = 0;
     this.width = width;
     this.height = height;
     this.element = document.createElement("img");
@@ -11,8 +11,8 @@ class Player {
     this.element.style.position = "absolute";
     this.element.style.zIndex = "2";
 
-    this.element.style.left = `${left}px`;
-    this.element.style.top = `${top}px`;
+    this.element.style.left = `${this.left}px`;
+    this.element.style.top = `${this.top}px`;
     this.element.style.width = `${width}px`;
     this.element.style.height = `${height}px`;
 

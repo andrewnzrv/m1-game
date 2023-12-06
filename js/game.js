@@ -7,7 +7,7 @@ class Game {
     this.livesImg = document.getElementById("lives");
     this.scoreNumImg = document.getElementById("score-number");
     this.gameEndScreen = document.getElementById("game-end-screen");
-    this.player = new Player(0, 0, 189, 105, "./images/player.png");
+    this.player = new Player(189, 105, "./images/player.png");
     this.obstacles = [];
     this.projectiles = [];
     this.explosions = [];
@@ -19,6 +19,7 @@ class Game {
   start() {
     this.gameStartScreen.style.display = "none";
     this.gameEndScreen.style.display = "none";
+    this.scoreNumImg.innerHTML = "";
     this.gameContainer.style.display = "block";
     this.gameContainer
       .querySelectorAll("*")
@@ -114,7 +115,7 @@ class Game {
       }
     }
     // Set the frequency of adding new obstacles
-    if (Math.random() > 0.99) {
+    if (Math.random() > 0.98) {
       this.obstacles.push(new Obstacle());
     }
 
@@ -147,10 +148,16 @@ class Game {
 
   endGame() {
     this.gameIsOver = true;
+
     this.gameEndScreen.style.display = "flex";
-    this.gameEndScreen
-      .querySelectorAll("*")
-      .forEach((element) => (element.style.display = "block"));
+    document.getElementById("restart-button").style.display = "block";
+
+    if (this.lives === 0) {
+      document.getElementById("you-lose").style.display = "block";
+    } else {
+      document.getElementById("you-win").style.display = "block";
+    }
+
     this.gameContainer
       .querySelectorAll("*")
       .forEach((element) => (element.style.cursor = "auto"));

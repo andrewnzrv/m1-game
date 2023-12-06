@@ -121,14 +121,24 @@ img {
 	width: 100vw;
     height: 100vh;
 	display: none;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	position: absolute;
 	z-index: 9;
+	gap: 30px;
+}
+
+#start-button {
+	cursor: pointer;
 }
 
 #restart-button {
 	display: none;
-	cursor: auto;
+	cursor: pointer;
 }
 
+#you-win, #you-lose {
+	display: none;
+	cursor: auto;
+}

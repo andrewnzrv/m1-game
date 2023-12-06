@@ -15,7 +15,7 @@ class Obstacle extends Player {
 
   move() {
     // Set the speed of obstacles
-    this.left -= 3;
+    this.left -= 5;
 
     // Fix getting blinking obstacles in the upper left corner
     if (this.left <= this.gameScreen.clientWidth) {
