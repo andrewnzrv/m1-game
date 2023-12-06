@@ -53,21 +53,27 @@ body {
 	background: grey;
 	}
 
-#restart-button {
-	display: none;
-}	
+img {
+	user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
 
 #game-container {
 	/*background-image: url("../../images/scene.png");
 	background-size: cover;*/
+	height: 100vh;
 	background: grey;
+	display: none;
 	cursor: none;
 }
 
 #game-stats {
-	padding-top: 150px;
-	margin-left: 50px;
-	margin-right: 50px;
+	padding-top: 50px;
+	padding-left: 50px;
+	padding-right: 50px;
 	display: none;
 	justify-content: space-between;
 	cursor: none;
@@ -112,14 +118,18 @@ body {
     overflow: hidden;
     }
 
-#game-end {
+#game-end-screen {
+	width: 100vw;
+    height: 100vh;
 	display: none;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	z-index: 9;
 }
 
-img {
-	user-select: none;
-    -moz-user-select: none;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+#restart-button {
+	display: none;
+	cursor: auto;
 }
+

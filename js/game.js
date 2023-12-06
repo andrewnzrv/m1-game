@@ -10,7 +10,7 @@ class Game {
     this.player = new Player(0, 0, 189, 105, "./images/player.png");
     this.obstacles = [];
     this.projectiles = [];
-    this.lives = 100;
+    this.lives = 1;
     this.score = 0;
     this.gameIsOver = false;
   }
@@ -18,6 +18,7 @@ class Game {
   start() {
     this.gameStartScreen.style.display = "none";
     this.gameEndScreen.style.display = "none";
+    this.gameContainer.style.display = "block";
     this.gameContainer
       .querySelectorAll("*")
       .forEach((element) => (element.style.display = "flex"));
@@ -100,7 +101,7 @@ class Game {
       }
     }
     // Set the frequency of adding new obstacles
-    if (Math.random() > 0.9) {
+    if (Math.random() > 0.99) {
       this.obstacles.push(new Obstacle());
     }
 
@@ -133,19 +134,31 @@ class Game {
 
   endGame() {
     setTimeout(() => {
-      this.player.element.remove();
-      this.projectiles.forEach((projectile) => projectile.element.remove());
-      this.obstacles.forEach((obstacle) => obstacle.element.remove());
-    }, 1500);
+      this.gameIsOver = true;
 
-    this.gameIsOver = true;
+      this.gameContainer
+        .querySelectorAll("*")
+        .forEach((element) => (element.style.opacity = "0.5"));
+      this.gameEndScreen.style.display = "flex";
+      this.gameEndScreen
+        .querySelectorAll("*")
+        .forEach((element) => (element.style.display = "block"));
+      this.gameContainer
+        .querySelectorAll("*")
+        .forEach((element) => (element.style.cursor = "auto"));
+    }, 500);
+  }
+
+  restart() {
+    this.player.element.remove();
+    this.projectiles.forEach((projectile) => projectile.element.remove());
+    this.obstacles.forEach((obstacle) => obstacle.element.remove());
 
     this.gameContainer
       .querySelectorAll("*")
-      .forEach((element) => (element.style.display = "none"));
-    this.gameEndScreen.style.display = "block";
-    this.gameEndScreen
+      .forEach((element) => (element.style.opacity = "1"));
+    this.gameContainer
       .querySelectorAll("*")
-      .forEach((element) => (element.style.display = "block"));
+      .forEach((element) => (element.style.cursor = "none"));
   }
 }

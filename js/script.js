@@ -4,6 +4,7 @@ window.onload = function () {
   });
 
   document.getElementById("restart-button").addEventListener("click", () => {
+    game.restart();
     startGame();
     console.log("Restart clicked"); // -----> REMOVE
   });
