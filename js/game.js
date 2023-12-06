@@ -10,7 +10,8 @@ class Game {
     this.player = new Player(0, 0, 189, 105, "./images/player.png");
     this.obstacles = [];
     this.projectiles = [];
-    this.lives = 1;
+    this.explosions = [];
+    this.lives = 3;
     this.score = 0;
     this.gameIsOver = false;
   }
@@ -77,6 +78,12 @@ class Game {
         const projectile = this.projectiles[j];
 
         if (projectile.didCollide(obstacle)) {
+          // Explode
+          let explosion = new Explosion(obstacle.left, obstacle.top);
+          setTimeout(() => {
+            explosion.element.remove();
+          }, 500);
+
           obstacle.element.remove();
           projectile.element.remove();
           this.obstacles.splice(i, 1);
@@ -105,7 +112,7 @@ class Game {
       this.obstacles.push(new Obstacle());
     }
 
-    // Update lives images
+    // Update life images
     switch (this.lives) {
       case 3:
         this.livesImg
@@ -133,20 +140,18 @@ class Game {
   }
 
   endGame() {
-    setTimeout(() => {
-      this.gameIsOver = true;
+    this.gameIsOver = true;
 
-      this.gameContainer
-        .querySelectorAll("*")
-        .forEach((element) => (element.style.opacity = "0.5"));
-      this.gameEndScreen.style.display = "flex";
-      this.gameEndScreen
-        .querySelectorAll("*")
-        .forEach((element) => (element.style.display = "block"));
-      this.gameContainer
-        .querySelectorAll("*")
-        .forEach((element) => (element.style.cursor = "auto"));
-    }, 500);
+    this.gameContainer
+      .querySelectorAll("*")
+      .forEach((element) => (element.style.opacity = "0.5"));
+    this.gameEndScreen.style.display = "flex";
+    this.gameEndScreen
+      .querySelectorAll("*")
+      .forEach((element) => (element.style.display = "block"));
+    this.gameContainer
+      .querySelectorAll("*")
+      .forEach((element) => (element.style.cursor = "auto"));
   }
 
   restart() {
