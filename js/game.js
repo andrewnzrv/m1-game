@@ -100,7 +100,7 @@ class Game {
       }
     }
     // Set the frequency of adding new obstacles
-    if (Math.random() > 0.99) {
+    if (Math.random() > 0.9) {
       this.obstacles.push(new Obstacle());
     }
 

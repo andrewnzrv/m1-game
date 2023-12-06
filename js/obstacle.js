@@ -7,11 +7,8 @@ class Obstacle extends Player {
     this.left = this.gameScreen.clientWidth + this.width;
     this.top = Math.floor(
       Math.random() *
-        (this.gameScreen.clientHeight -
-          this.height -
-          50 -
-          (this.height + 50) +
-          (this.height + 50))
+        (this.gameScreen.clientHeight - this.height - 50 - (this.height + 70)) +
+        (this.height + 70)
     );
     this.element.style.display = "none";
   }

@@ -61,20 +61,27 @@ body {
 	/*background-image: url("../../images/scene.png");
 	background-size: cover;*/
 	background: grey;
+	cursor: none;
 }
 
 #game-stats {
-	margin-top: 100px;
+	padding-top: 150px;
 	margin-left: 50px;
 	margin-right: 50px;
 	display: none;
 	justify-content: space-between;
+	cursor: none;
 }
 
 #lives {
 	display: flex;
 	justify-content: flex-start;
 	align-items: flex-start;
+	cursor: none;
+}
+
+.life {
+	margin-right: 10px;;
 }
 
 #score {
@@ -93,8 +100,8 @@ body {
 	height: 21px;
 }
 
-.life {
-	margin-right: 10px;;
+#score-number > img {
+	margin-left: 4px;
 }
 	  
 #game-screen {

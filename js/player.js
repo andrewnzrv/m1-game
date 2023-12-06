@@ -23,8 +23,8 @@ class Player {
     if (this.left < 10) {
       this.left = 10;
     }
-    if (this.top < 10) {
-      this.top = 10;
+    if (this.top < 100) {
+      this.top = 100;
     }
     if (this.left > this.gameScreen.offsetWidth - this.width - 10) {
       this.left = this.gameScreen.offsetWidth - this.width - 10;
