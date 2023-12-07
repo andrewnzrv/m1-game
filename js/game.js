@@ -15,7 +15,6 @@ class Game {
     this.loseSound = new Audio("./sounds/lose.ogg");
 
     this.gameSound.volume = 0.1;
-    //this.explosionSound.volume = 0.1;
     this.winSound.volume = 0.1;
     this.loseSound.volume = 0.1;
 
@@ -58,16 +57,15 @@ class Game {
   update() {
     this.player.move();
 
+    // Remove projectiles that are off the screen from the DOM and array
     for (let i = 0; i < this.projectiles.length; i++) {
       const projectile = this.projectiles[i];
       projectile.move();
 
-      // Remove projectiles that are off the screen from the DOM and array
       if (projectile.left + projectile.width > this.gameScreen.clientWidth) {
         projectile.element.remove();
         this.projectiles.splice(i, 1);
         i--;
-        console.log(`Projectiles: ${this.projectiles.length}`); // -----> REMOVE
       }
     }
 
@@ -85,18 +83,10 @@ class Game {
       // Check for collision (player and obstacle)
       else if (this.player.didCollide(obstacle)) {
         this.explode(obstacle.left, obstacle.top);
-        /*
-        // Explode
-        let explosion = new Explosion(this.player.left, this.player.top);
-        setTimeout(() => {
-          explosion.element.remove();
-        }, 500);
-        //this.explosionSound.play();*/
 
         obstacle.element.remove();
         this.obstacles.splice(i, 1);
         this.lives--;
-        console.log(`Lives: ${this.lives}`); // -----> REMOVE
         i--;
       }
 
@@ -105,20 +95,6 @@ class Game {
         const projectile = this.projectiles[j];
 
         if (projectile.didCollide(obstacle)) {
-          // Explode
-          /*let explosion = new Explosion(obstacle.left, obstacle.top);
-          setTimeout(() => {
-            explosion.element.remove();
-          }, 500);
-          this.explosionSoundArr.push(new Audio(this.explosionSound));
-          this.explosionSoundArr[
-            this.explosionSoundArr.length - 1
-          ].volume = 0.1;
-          this.explosionSoundArr[this.explosionSoundArr.length - 1].play();
-          setTimeout(() => {
-            this.explosionSoundArr.splice(0, 1);
-          }, 3000);*/
-
           this.explode(obstacle.left, obstacle.top);
 
           obstacle.element.remove();
@@ -126,8 +102,6 @@ class Game {
           this.obstacles.splice(i, 1);
           this.projectiles.splice(j, 1);
           this.score++;
-          console.log(`Score: ${this.score}`); // -----> REMOVE
-          console.log(`Projectiles: ${this.projectiles.length}`); // -----> REMOVE
           i--;
           j--;
 

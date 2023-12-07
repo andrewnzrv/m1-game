@@ -1,8 +1,4 @@
 window.onload = function () {
-  const introSound = new Audio("./sounds/intro.ogg");
-  introSound.play();
-  introSound.volume = 0.1;
-
   document.getElementById("start-button").addEventListener("click", () => {
     startGame();
   });
@@ -13,8 +9,6 @@ window.onload = function () {
   });
 
   function startGame() {
-    introSound.pause();
-
     function handleMouseMovements(event) {
       game.player.left = event.clientX;
       game.player.top = event.clientY;
