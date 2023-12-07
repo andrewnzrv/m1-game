@@ -22,6 +22,7 @@ class Game {
     this.projectiles = [];
     this.explosions = [];
     this.explosionSoundArr = [];
+    this.shootSoundArr = [];
     this.lives = 3;
     this.score = 0;
     this.gameIsOver = false;
@@ -199,4 +200,14 @@ class Game {
       this.explosionSoundArr.splice(0, 1);
     }, 3000);
   }
+
+  /*shoot(width, height, imgSrc) {
+    this.projectiles.push(new Projectile(width, height, imgSrc));
+    this.shootSoundArr.push(new Audio("/sounds/shoot.wav"));
+    this.shootSoundArr[this.shootSoundArr.length - 1].volume = 0.1;
+    this.shootSoundArr[this.shootSoundArr.length - 1].play();
+    setTimeout(() => {
+      this.shootSoundArr.splice(0, 1);
+    }, 3000);
+  }*/
 }
