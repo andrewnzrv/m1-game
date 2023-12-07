@@ -27,10 +27,6 @@ window.onload = function () {
         game.player.element.src = "./images/secret-player.png";
         game.player.element.style.width = "129px";
         game.player.element.style.height = "174px";
-
-        //game.projectile.element.src = "./images/secret-projectile.png";
-        //game.projectile.element.style.width = "207px";
-        //game.projectile.element.style.height = "74px";
       }
     }
 
