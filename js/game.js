@@ -8,15 +8,29 @@ class Game {
     this.scoreNumImg = document.getElementById("score-number");
     this.gameEndScreen = document.getElementById("game-end-screen");
     this.player = new Player(189, 105, "./images/player.png");
+
+    this.explosionSound = "./sounds/explosion.wav";
+    this.gameSound = new Audio("./sounds/game.ogg");
+    this.winSound = new Audio("./sounds/win.ogg");
+    this.loseSound = new Audio("./sounds/lose.ogg");
+
+    this.gameSound.volume = 0.1;
+    //this.explosionSound.volume = 0.1;
+    this.winSound.volume = 0.1;
+    this.loseSound.volume = 0.1;
+
     this.obstacles = [];
     this.projectiles = [];
     this.explosions = [];
+    this.explosionSoundArr = [];
     this.lives = 3;
     this.score = 0;
     this.gameIsOver = false;
   }
 
   start() {
+    this.gameSound.play();
+
     this.gameStartScreen.style.display = "none";
     this.gameEndScreen.style.display = "none";
     this.gameEndScreen
@@ -70,11 +84,14 @@ class Game {
 
       // Check for collision (player and obstacle)
       else if (this.player.didCollide(obstacle)) {
+        this.explode(obstacle.left, obstacle.top);
+        /*
         // Explode
         let explosion = new Explosion(this.player.left, this.player.top);
         setTimeout(() => {
           explosion.element.remove();
         }, 500);
+        //this.explosionSound.play();*/
 
         obstacle.element.remove();
         this.obstacles.splice(i, 1);
@@ -89,10 +106,20 @@ class Game {
 
         if (projectile.didCollide(obstacle)) {
           // Explode
-          let explosion = new Explosion(obstacle.left, obstacle.top);
+          /*let explosion = new Explosion(obstacle.left, obstacle.top);
           setTimeout(() => {
             explosion.element.remove();
           }, 500);
+          this.explosionSoundArr.push(new Audio(this.explosionSound));
+          this.explosionSoundArr[
+            this.explosionSoundArr.length - 1
+          ].volume = 0.1;
+          this.explosionSoundArr[this.explosionSoundArr.length - 1].play();
+          setTimeout(() => {
+            this.explosionSoundArr.splice(0, 1);
+          }, 3000);*/
+
+          this.explode(obstacle.left, obstacle.top);
 
           obstacle.element.remove();
           projectile.element.remove();
@@ -144,12 +171,14 @@ class Game {
     }
 
     // Check if game is over
-    if (this.lives === 0 || this.score === 5) {
+    if (this.lives === 0 || this.score === 50) {
       this.endGame();
     }
   }
 
   endGame() {
+    this.gameSound.pause();
+
     this.gameIsOver = true;
 
     this.gameEndScreen.style.display = "flex";
@@ -157,8 +186,10 @@ class Game {
 
     if (this.lives === 0) {
       document.getElementById("you-lose").style.display = "block";
+      this.loseSound.play();
     } else {
       document.getElementById("you-win").style.display = "block";
+      this.winSound.play();
     }
 
     this.gameContainer
@@ -167,6 +198,9 @@ class Game {
   }
 
   restart() {
+    this.loseSound.pause();
+    this.winSound.pause();
+
     this.player.element.remove();
     this.projectiles.forEach((projectile) => projectile.element.remove());
     this.obstacles.forEach((obstacle) => obstacle.element.remove());
@@ -177,5 +211,18 @@ class Game {
     this.gameContainer
       .querySelectorAll("*")
       .forEach((element) => (element.style.cursor = "none"));
+  }
+
+  explode(left, top) {
+    let explosion = new Explosion(left, top);
+    setTimeout(() => {
+      explosion.element.remove();
+    }, 500);
+    this.explosionSoundArr.push(new Audio(this.explosionSound));
+    this.explosionSoundArr[this.explosionSoundArr.length - 1].volume = 0.1;
+    this.explosionSoundArr[this.explosionSoundArr.length - 1].play();
+    setTimeout(() => {
+      this.explosionSoundArr.splice(0, 1);
+    }, 3000);
   }
 }

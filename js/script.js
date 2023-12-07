@@ -1,4 +1,8 @@
 window.onload = function () {
+  const introSound = new Audio("./sounds/intro.ogg");
+  introSound.play();
+  introSound.volume = 0.1;
+
   document.getElementById("start-button").addEventListener("click", () => {
     startGame();
   });
@@ -6,10 +10,11 @@ window.onload = function () {
   document.getElementById("restart-button").addEventListener("click", () => {
     game.restart();
     startGame();
-    console.log("Restart clicked"); // -----> REMOVE
   });
 
   function startGame() {
+    introSound.pause();
+
     function handleMouseMovements(event) {
       game.player.left = event.clientX;
       game.player.top = event.clientY;
@@ -17,9 +22,8 @@ window.onload = function () {
 
     window.addEventListener("mousemove", handleMouseMovements);
 
-    window.addEventListener("click", () => {
+    document.getElementById("game-screen").addEventListener("click", () => {
       game.projectiles.push(new Projectile());
-      console.log("FIRE!!!"); // -----> REMOVE
     });
 
     game = new Game();
