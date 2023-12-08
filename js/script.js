@@ -50,7 +50,7 @@ window.onload = function () {
       game.projectiles.push(projectile);
     }
 
-    shootSoundArr.push(new Audio("/sounds/shoot.wav"));
+    shootSoundArr.push(new Audio("./sounds/shoot.wav"));
     shootSoundArr[shootSoundArr.length - 1].volume = 0.1;
     shootSoundArr[shootSoundArr.length - 1].play();
     setTimeout(() => {
