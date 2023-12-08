@@ -1,8 +1,8 @@
 class Projectile extends Player {
   constructor(imgSrc) {
     super();
-    this.width = 50;
-    this.height = 20;
+    this.width = 30;
+    this.height = 24;
     this.element.src = imgSrc;
     this.left = game.player.left + (game.player.width - this.width);
     this.top = game.player.top + game.player.height / 2 - this.height / 2;

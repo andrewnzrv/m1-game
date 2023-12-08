@@ -46,8 +46,10 @@ window.onload = function () {
       projectile.top = game.player.top + 133;
       game.projectiles.push(projectile);
     } else {
-      let projectile = new Projectile("./images/projectile.png");
+      let projectile = new Projectile("./images/projectile.gif");
       game.projectiles.push(projectile);
+      projectile.element.style.width = `30px`;
+      projectile.element.style.height = `24px`;
     }
 
     shootSoundArr.push(new Audio("./sounds/shoot.wav"));
