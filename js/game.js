@@ -22,9 +22,11 @@ class Game {
     this.projectiles = [];
     this.explosions = [];
     this.explosionSoundArr = [];
+    this.gameIsOver = false;
+
     this.lives = 3;
     this.score = 0;
-    this.gameIsOver = false;
+    this.maxScore = 50;
   }
 
   start() {
@@ -145,7 +147,7 @@ class Game {
     }
 
     // Check if game is over
-    if (this.lives === 0 || this.score === 50) {
+    if (this.lives === 0 || this.score === this.maxScore) {
       this.endGame();
     }
   }
