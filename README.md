@@ -1,6 +1,13 @@
 # Star Rickpocalypse
 
-This is a browser-based space shooter inspired by 'Rick and Morty'. It is built with HTML, CSS, JavaScript, DOM manipulation, and Object-Oriented Programming (OOP).
+This is a browser-based space shooter inspired by 'Rick and Morty'. 
+
+It is built with:
+- HTML
+- CSS
+- JavaScript
+- DOM manipulation
+- Object-Oriented Programming (OOP)
 
 ## How to play
 - Use your mouse to fly around warheads
