@@ -15,6 +15,7 @@ It is built with:
 - You have three lives
 - Destroy 50 warheads to win
 - Play on desktop for better experience
+- Try to find an Easter Egg :)
 
 
 [Click here to play](https://andrewnzrv.github.io/star-rickpocalypse/)
