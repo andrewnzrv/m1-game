@@ -19,4 +19,4 @@ It is built with:
 
 [Click here to play](https://andrewnzrv.github.io/star-rickpocalypse/)
 
-![Screenshot](./images/screenshot.gif)
+![Screenshot](./images/screen-recording.gif)
