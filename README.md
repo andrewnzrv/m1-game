@@ -1,6 +1,6 @@
 # Star Rickpocalypse
 
-This is a browser-based space shooter inspired by 'Rick and Morty' and developed by Andrei Nazarov ([GitHub](https://github.com/andrewnzrv) | [LinkedIn](https://www.linkedin.com/in/andrew-nazarov/)).
+This is a browser-based space shooter inspired by 'Rick and Morty' and developed by **Andrei Nazarov** ([GitHub](https://github.com/andrewnzrv) | [LinkedIn](https://www.linkedin.com/in/andrew-nazarov/)).
 
 It is built with:
 - HTML
